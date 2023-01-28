@@ -13,6 +13,20 @@ run IFS TAR scripts from vs code using a context menu item in file explorer
 Test-A-Rest
 VS Code
 
+## Install locally
+
+use install-package.cmd 
+
+or
+
+```
+code --install-extension ifs-test-a-rest-extension-<version>.vsix
+
+I.e. 
+
+code --install-extension ifs-test-a-rest-extension-0.0.1.vsix
+```
+
 ## Extension Settings
 
 Following settings need to be set before use
@@ -26,6 +40,14 @@ Following settings need to be set before use
 Navigate to File->Preferences->Settings->Extentions->IFS TAR to set up the settings
 
 ![Settings](https://dilshanwn.github.io/imagehost/TarSettings.jpg "Sample settings")
+
+## Build package
+
+```
+npm install -g @vscode/vsce
+
+vsce package
+```
 
 ## TODO
 * Add walkthrough to setup settings if not set
