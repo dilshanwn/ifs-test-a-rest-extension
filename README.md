@@ -21,7 +21,9 @@ Following settings need to be set before use
 * `IfsTar.ifsUserName`: Set to Username for IFS Environment.
 * `IfsTar.ifsPassword`: Set to Password for IFS Environment.
 
+Navigate to File->Preferences->Settings->Extentions->IFS TAR to set up the settings
 
+![Settings](https://dilshanwn.github.io/imagehost/TarSettings.jpg "Sample settings")
 
 ## TODO
 * Add walkthrough to setup settings if not set
