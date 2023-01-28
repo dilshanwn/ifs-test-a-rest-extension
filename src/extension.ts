@@ -6,6 +6,8 @@ import * as vscode from 'vscode';
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 
+	var config = vscode.workspace.getConfiguration('IfsTar');
+	console.log(JSON.stringify(config));
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
 	console.log('Congratulations, your extension "ifs-test-a-rest-extension" is now active!');
@@ -13,10 +15,20 @@ export function activate(context: vscode.ExtensionContext) {
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('ifs-test-a-rest-extension.helloWorld', () => {
+	let disposable = vscode.commands.registerCommand('ifs-test-a-rest-extension.ifs-tar-run', (uri:vscode.Uri) => {
 		// The code you place here will be executed every time your command is executed
 		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from IFS Test-A-REST Extension!');
+
+		var url = (new String (config.ifsUrl)).trim().replace(/\/$/, "");
+
+		vscode.window.showInformationMessage('Start running TAR script ...');
+		var command = `${config.tarExeLocation}  ServerUrl=${url} Username=${config.ifsUserName} Password=${config.ifsPassword} filetoread='${uri.fsPath}'`;
+		const terminal = vscode.window.createTerminal();
+		terminal.show();
+		terminal.sendText(command);
+		vscode.window.showInformationMessage('Finished running TAR script ...');
+
+
 	});
 
 	context.subscriptions.push(disposable);

@@ -1,8 +1,10 @@
 {
   "name": "ifs-test-a-rest-extension",
   "displayName": "IFS Test-A-REST Extension",
-  "description": "IFS TAR extenstion",
+  "description": "IFS TAR Script Extension for VS Code",
   "version": "0.0.1",
+  "publisher": "ifs-labs",
+  "repository": "https://github.com/dilshanwn/ifs-test-a-rest-extension",
   "engines": {
     "vscode": "^1.74.0"
   },
@@ -10,16 +12,56 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:ifs-test-a-rest-extension.helloWorld"
+    "workspaceContains:**/.md"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "ifs-test-a-rest-extension.helloWorld",
-        "title": "Hello World"
+        "command": "ifs-test-a-rest-extension.ifs-tar-run",
+        "title": "Run TAR Script"
+      }
+    ],
+   "configuration":[
+    {
+      "title": "IFS TAR",
+      "properties": {
+        "IfsTar.tarExeLocation": {
+          "order": 0,
+          "type": "string",
+          "scope": "machine",
+          "description": "Absolute path to the TestARest.exe ending with TestARest.exe"
+        },
+        "IfsTar.ifsUrl": {
+          "order": 1,
+          "type": "string",
+          "scope": "machine",
+          "description": "URL for IFS Environment"
+        },
+        "IfsTar.ifsUserName": {
+          "order": 2,
+          "type": "string",
+          "scope": "machine",
+          "description": "Username for IFS Environment"
+        },
+        "IfsTar.ifsPassword": {
+          "order": 3,
+          "type": "string",
+          "scope": "machine",
+          "description": "Password for IFS Environment"
+        }
+        
+      }
+    }
+   ],
+   "menus":{
+    "explorer/context":[
+      {
+        "command": "ifs-test-a-rest-extension.ifs-tar-run",
+        "when": "resourceExtname == .md || resourceExtname == .mdk"
       }
     ]
+   } 
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
@@ -30,6 +72,7 @@
     "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
+    "@vscode/vsce":"^2.17.0",
     "@types/vscode": "^1.74.0",
     "@types/glob": "^8.0.0",
     "@types/mocha": "^10.0.1",
