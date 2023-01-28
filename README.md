@@ -6,6 +6,8 @@ This can be used to run IFS TAR scripts from vs code using a context menu item i
 
 run IFS TAR scripts from vs code using a context menu item in file explorer
 
+![ContextMenu](https://dilshanwn.github.io/imagehost/TarExtRun.jpg "ContextMenu")
+
 ## Requirements
 
 Test-A-Rest
