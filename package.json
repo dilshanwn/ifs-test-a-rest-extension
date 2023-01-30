@@ -2,7 +2,7 @@
   "name": "ifs-test-a-rest-extension",
   "displayName": "IFS Test-A-REST Extension",
   "description": "IFS TAR Script Extension for VS Code",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "ifs-labs",
   "repository": "https://github.com/dilshanwn/ifs-test-a-rest-extension",
   "engines": {
