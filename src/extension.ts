@@ -23,7 +23,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 		vscode.window.showInformationMessage('Start running TAR script ...');
 		var command = `${config.tarExeLocation}  ServerUrl=${url} Username=${config.ifsUserName} Password=${config.ifsPassword} filetoread='${uri.fsPath}'`;
-		const terminal = vscode.window.createTerminal();
+		const terminal = vscode.window.createTerminal( {shellPath:"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"})
 		terminal.show();
 		terminal.sendText(command);
 		vscode.window.showInformationMessage('Finished running TAR script ...');
